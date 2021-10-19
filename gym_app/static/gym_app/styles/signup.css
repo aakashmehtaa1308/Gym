@@ -1,0 +1,61 @@
+h1{
+    color: turquoise;
+}
+
+.form-container {
+    width: 50%;
+    margin: 0 auto;
+    box-shadow: -4px -4px 8px #00000021,4px 4px 8px #00000021;
+    padding: 16px;
+    margin-top: 8%;
+    border-radius: 4px;
+}
+
+.form-container label{
+    font-size: 18px;
+    width: 30%;
+}
+
+.single-form-item input {
+    width: 100%;
+    height: 25px;
+}
+
+.single-form-item select {
+    width: 100%;
+    height: 25px;
+}
+
+.errors input {
+    border: 1px solid red;
+}
+
+.single-form-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+
+.form-container button{
+    width: 90px;
+    height: 30px;
+    background-color: turquoise;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    margin-left: 40%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.navigate {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: black;
+}
+
+.alert-error {
+    color: red;
+    padding: 8px;
+}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up{% endblock %}
+    {% block content %}
+    <div class="form-container">
+      <form method="POST" action="/signup/">
+        {% csrf_token %} {% for field in form.visible_fields %}
+        <div class="single-form-item {% if field.errors %} errors {% endif %}">
+          <label>{{ field.label }}</label>
+          {{ field }}
+        </div>
+        <div>{{field.errors}}</div>
+        {% endfor %}
+        <button>Submit</button>
+      </form>
+      <div class='navigate'>
+        Already have an account ? <a class='navigate-link' href="{% url 'signin' %}">Signin</a>
+      </div>
+    </div>
+ {% endblock %}
+

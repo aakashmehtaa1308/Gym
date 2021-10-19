@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Calorie count{% endblock %}
+
+{% block content %}
+
+    <h1>count your calorie.</h1>
+    <div class="form-container">
+      {% for message in messages %}
+      <div class="alert-error">{{ message }}</div>
+      {% endfor %}
+      <form method="POST" action="/calorie/">
+        {% csrf_token %}
+        <div class="single-form-item">
+          <label for="infredient1">Select ingredient 1</label>
+          <select required name="ingredient1" id="ingredient1">
+            {% for item in choices %}
+            <option value="{{item.id}}">{{item.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="single-form-item">
+          <label for="infredient2">Select ingredient 2</label>
+          <select required name="ingredient2" id="ingredient2">
+            {% for item in choices %}
+            <option value="{{item.id}}" n>{{item.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="single-form-item">
+          <label for="infredient3">Select ingredient 3</label>
+          <select required name="ingredient3" id="ingredient3">
+            {% for item in choices %}
+            <option value="{{item.id}}">{{item.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="single-form-item">
+          <label for="infredient4">Select ingredient 4</label>
+          <select required name="ingredient4" id="ingredient4">
+            {% for item in choices %}
+            <option value="{{item.id}}">{{item.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+    <h3>All Diets :</h3>
+    {% for item in diets %}
+    <div class="profile-data">
+      <ul>
+        <li>Ingredient-1: <span>{{item.ingredient1}}</span></li>
+        <li>Ingredient-2: <span>{{item.ingredient2}}</span></li>
+        <li>Ingredient-3: <span>{{item.ingredient3}}</span></li>
+        <li>Ingredient-4: <span>{{item.ingredient4}}</span></li>
+        <li>Calorie Count <span>{{item.calorie_count}}</span></li>
+      </ul>
+    </div>
+    <p style="text-align: center">
+      ------------------------------------------------------------------
+    </p>
+    {% endfor %}
+{% endblock %}

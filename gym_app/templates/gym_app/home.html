@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+  
+{% block content %}
+
+  {% if user.is_authenticated %}
+  <div class="form-container">
+    {% for message in messages %}
+      <div class="alert-error">{{ message }}</div>
+      {% endfor %}
+    <form method="POST" action="/">
+      {% csrf_token %} {% for field in form.visible_fields %}
+      <div class="single-form-item {% if field.errors %} errors {% endif %}">
+        <label>{{ field.label }}</label>
+        {{ field }}
+      </div>
+      <div>{{field.errors}}</div>
+      {% endfor %}
+      <button>Submit</button>
+    </form>
+  </div>
+  {% else %}
+  <h1>Please login to add your profile.</h1>
+  {% endif %}
+
+  {% if profile %}
+  <div class='profile-data'>
+    <ul>
+      <li>Height: <span>{{profile.height}}</span> </li>
+      <li>Weight: <span>{{profile.weight}}</span> </li>
+      <li>BMI(Body mass index): <span>{{profile.bmi}}</span> </li>
+      <li>Category: <span>{{profile.category}}</span>  </li>
+      <li>Goal: <span>{{profile.goal}}</span>  </li>
+    </ul>
+  </div>
+  {% elif user.is_authenticated %}
+  <h3>Create your profile first...</h3>
+  {% endif %}
+{% endblock %}
+

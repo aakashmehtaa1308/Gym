@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign in {% endblock %}
+{% block content %}
+    <div class="form-container">
+      {% for message in messages %}
+      <div class="alert-error">{{ message }}</div>
+      {% endfor %}
+      <form method="POST" action="/signin/">
+        {% csrf_token %} {% for field in form.visible_fields %}
+        <div class="single-form-item {% if messages %} errors {% endif %}">
+          <label>{{ field.label }}</label>
+          {{ field }}
+        </div>
+        <div>{{field.errors}}</div>
+        {% endfor %}
+        <button>Submit</button>
+      </form>
+      <div class="navigate">
+        Don't have an account ?
+        <a class="navigate-link" href="{% url 'signup' %}">Signup</a>
+      </div>
+    </div>
+{% endblock %}
